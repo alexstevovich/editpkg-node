@@ -18,14 +18,13 @@ export async function load(dir = process.cwd()) {
 /**
  * Write package.json back to the given directory.
  */
-export async function write(dir = process.cwd(), content = {}) {
+export async function write(content,path="./package.json") {
     try {
-        const packagePath = path.join(dir, 'package.json');
         const packageData = JSON.stringify(content, null, 2);
-        await fs.writeFile(packagePath, packageData, 'utf-8');
-        console.log(`editPkg: Successfully updated package.json in ${dir}`);
+        await fs.writeFile(path, packageData, 'utf-8');
+        console.log(`editPkg: Successfully updated package.json in ${content}`);
     } catch (error) {
-        console.error(`editPkg: Error writing package.json in ${dir}:`, error.message);
+        console.error(`editPkg: Error writing package.json in ${content}:`, error.message);
     }
 }
 
@@ -85,14 +84,14 @@ export async function backup(data, path = "./package.backup.json") {
  * @param {Object} pkg - The package.json object.
  * @returns {Object} - The modified package.json object.
  */
-export async function applyPublish(pkg) {
+export function applyPublish(pkg) {
     if (!pkg || typeof pkg !== 'object') {
         throw new Error("Invalid package.json data.");
     }
 
-    if (pkg.publish) {
-        Object.assign(pkg, pkg.publish);
-        delete pkg.publish; // Remove the "publish" key after applying it
+    if (pkg.publishOverride) {
+        Object.assign(pkg, pkg.publishOverride);
+        delete pkg.publishOverride; // Remove the "publish" key after applying it
     }
 
     return pkg;
@@ -106,8 +105,8 @@ export async function applyPublish(pkg) {
  * @returns {Object} - The cleaned package.json object.
  */
 export function pruneForPublish(pkg) {
-    if (!pkg || typeof pkg !== 'object') return pkg;
 
+    if (!pkg || typeof pkg !== 'object') return pkg;
     const cleanedPkg = { ...pkg };
 
     // Remove fields not needed for production

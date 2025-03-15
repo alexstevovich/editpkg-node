@@ -70,7 +70,11 @@ logs/
 # test
 test-files/
 
+
 # My Tools
 git-init.bat
 git-commit.bat
 git-push.bat
+
+package.backup.json
+package.proof.json
