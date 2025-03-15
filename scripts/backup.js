@@ -1,4 +1,4 @@
 import {commitChanges} from 'gitcmds'
 
 commitChanges()
-console.log("test")
+console.log("test2")
