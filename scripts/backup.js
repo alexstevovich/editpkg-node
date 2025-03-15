@@ -1,7 +1,13 @@
-import {commitChanges} from 'gitcmds'
+import { commitChanges } from "gitcmds";
 
-const isAuto = process.argv.includes("--auto"); // Detect if --auto was passed
-console.log(isAuto)
+// Check if --auto flag is present
+const isAuto = process.argv.includes("--auto");
 
-commitChanges()
-console.log("test2")
+// Construct commit message only if auto mode is enabled
+const commitMessage = isAuto 
+    ? `Auto backup: ${new Date().toISOString()}`  // Custom auto-generated message
+    : null; // Null means it will prompt user for input
+
+await commitChanges(commitMessage);
+
+console.log("✅ Backup process complete.");
