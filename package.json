@@ -25,7 +25,7 @@
   "scripts": {
     "test": "vitest",
     "build": "node ./scripts/build.js",
-    "backup": "node ./scripts/backup.js",
+    "backup": "node ./scripts/backup.js --main",
     "deploy": "npm run build && node ./scripts/deploy.js",
     "bump": "node ./scripts/bump.js"
   },
