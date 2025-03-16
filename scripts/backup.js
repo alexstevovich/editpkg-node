@@ -5,6 +5,7 @@ import { merge,  switchBranch, addAndCommitChanges, pushToAllRemotes } from "git
 const isAuto = process.argv.includes("--auto");
 const toMain = process.argv.includes("--main");
 
+
 // Construct commit message only if auto mode is enabled
 const commitMessage = isAuto 
     ? `Auto backup: ${new Date().toISOString()}`  // Custom auto-generated message
