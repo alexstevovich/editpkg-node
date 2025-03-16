@@ -1,4 +1,4 @@
-import { switchBranch, addAndCommitChanges } from "gitcmds";
+import { switchBranch, addAndCommitChanges, pushToAllRemotes } from "gitcmds";
 
 
 // Check if --auto flag is present
@@ -11,6 +11,7 @@ const commitMessage = isAuto
 
 await switchBranch('dev')
 await addAndCommitChanges(commitMessage);
+await pushToAllRemotes('dev');
 
 console.log("TEST")
 console.log("✅ Backup process complete.");
