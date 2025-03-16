@@ -1,4 +1,5 @@
-import { commitChanges } from "gitcmds";
+import { switchBranch, addAndCommitChanges } from "gitcmds";
+
 
 // Check if --auto flag is present
 const isAuto = process.argv.includes("--auto");
@@ -8,6 +9,7 @@ const commitMessage = isAuto
     ? `Auto backup: ${new Date().toISOString()}`  // Custom auto-generated message
     : null; // Null means it will prompt user for input
 
-await commitChanges(commitMessage);
+await switchBranch('dev')
+await addAndCommitChanges(commitMessage);
 
 console.log("✅ Backup process complete.");

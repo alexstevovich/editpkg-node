@@ -26,8 +26,8 @@
     "test": "vitest",
     "build": "node ./scripts/build.js",
     "backup": "node ./scripts/backup.js",
-    "publish": "npm run build && npm run backup && node ./scripts/publish.js",
-    "touch": "node touch.js"
+    "deploy": "npm run build && node ./scripts/deploy.js",
+    "bump": "node ./scripts/bump.js"
   },
   "license": "UNLICENSED",
   "author": {
@@ -40,5 +40,5 @@
     "type": "git",
     "url": "https://github.com/alexstevovich/editpkg-node.git"
   },
-  "lastPublish": "2025-03-15T21:41:11.347Z"
+  "lastPublish": "2025-03-16T01:09:47.627Z"
 }
