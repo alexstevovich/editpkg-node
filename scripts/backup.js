@@ -21,7 +21,7 @@ console.log("✅ Backup process complete.");
 
 if(toMain)
 {
-await switchBranch('main')
-await merge("dev");
-await pushToAllRemotes('dev');
+    await switchBranch('main')
+    await merge("dev");
+    await pushToAllRemotes('main');
 }
