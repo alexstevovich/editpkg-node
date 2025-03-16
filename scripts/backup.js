@@ -12,4 +12,5 @@ const commitMessage = isAuto
 await switchBranch('dev')
 await addAndCommitChanges(commitMessage);
 
+console.log("TEST")
 console.log("✅ Backup process complete.");
