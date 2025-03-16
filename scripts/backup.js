@@ -24,4 +24,5 @@ if(toMain)
     await switchBranch('main')
     await merge("dev");
     await pushToAllRemotes('main');
+    await switchBranch('dev')
 }
